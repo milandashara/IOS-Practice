@@ -60,7 +60,13 @@
 {
     [self displayAmount];
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textFieldIR resignFirstResponder];
+    [textFieldNumberOfYears resignFirstResponder];
+    [textFieldPrincipal resignFirstResponder];
+    return YES;
+}
 
 
 @end
