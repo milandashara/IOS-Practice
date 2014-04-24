@@ -7,10 +7,10 @@
 //
 
 #import "GoogleResultsViewController.h"
-
+#import "SearchResults.h"
 @implementation GoogleResultsViewController
 
-@synthesize resultView;
+@synthesize resultView,searchResults;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -40,7 +40,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return searchResults.searchTitles.count;
 }
 
 
@@ -57,6 +57,8 @@
     // Configure the cell...
     NSUInteger row = indexPath.row;
 
+    
+    cell.textLabel.text=[NSString stringWithFormat:@"%d. %@",row+1,[searchResults.searchTitles objectAtIndex:row]];
     return cell;
 }
 
@@ -72,7 +74,10 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
     */
-	NSUInteger row = indexPath.row;    
+	NSUInteger row = indexPath.row;
+    searchResults.selectedLink=[searchResults.searchLinks objectAtIndex:row];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"SwitchWebView" object:nil];
 }
 
 

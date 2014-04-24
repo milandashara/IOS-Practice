@@ -18,4 +18,5 @@
 @property(strong, nonatomic) NSMutableArray *searchTitles;
 @property(strong, nonatomic) NSString *selectedLink;
 
+
 @end

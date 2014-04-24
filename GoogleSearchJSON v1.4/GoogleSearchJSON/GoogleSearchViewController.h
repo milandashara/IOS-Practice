@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface GoogleSearchViewController : UIViewController {
+@class SearchResults;
+@interface GoogleSearchViewController : UIViewController<NSURLSessionDataDelegate> {
 	UITextField *searchString;
 	UIActivityIndicatorView *activityIndicatorView;
     NSMutableData *buffer;
 	NSURLConnection *conn;
 }
+@property(strong,nonatomic) SearchResults *searchResults;
+
 @property(strong, nonatomic) IBOutlet UITextField *searchString;
 @property(strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property(strong, nonatomic) NSMutableData *buffer;

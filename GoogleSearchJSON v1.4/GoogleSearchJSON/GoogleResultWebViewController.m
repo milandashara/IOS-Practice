@@ -7,10 +7,10 @@
 //
 
 #import "GoogleResultWebViewController.h"
-
+#import "SearchResults.h"
 @implementation GoogleResultWebViewController
 
-@synthesize webView;
+@synthesize webView,searchResults;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -41,6 +41,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    NSString *urlAddress=searchResults.selectedLink;
+    
+    NSURL *url=[NSURL URLWithString:urlAddress];
+    NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:requestObj];
 }
 
 /*
