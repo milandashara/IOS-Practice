@@ -15,6 +15,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *stockSymbol;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) NSMutableData *buffer;
+@property(strong,nonatomic) NSXMLParser *parser;
+//@property(strong,nonatomic) NSURLConnection *conn;
+
+
 
 
 - (IBAction) lookup;

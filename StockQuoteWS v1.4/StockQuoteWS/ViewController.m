@@ -11,13 +11,32 @@
 @interface ViewController () {
 bool dateFound;
 bool priceFound;
+
 NSURLConnection *conn;
 }
 @end
 
 @implementation ViewController
-@synthesize stockDate, stockLastPrice, stockSymbol, activityIndicatorView,buffer;
+@synthesize stockDate, stockLastPrice, stockSymbol, activityIndicatorView,buffer,parser;
 - (IBAction) lookup {
+    NSString *symbol=stockSymbol.text;
+    NSString *soapRequest=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetQuote xmlns=\"http://www.webserviceX.NET/\"><symbol>%@</symbol></GetQuote></soap:Body></soap:Envelope>",symbol];
+    
+    NSLog(@"Soap Request :%@" ,soapRequest);
+    
+    NSURL *url=[NSURL URLWithString:@"http://www.webservicex.net/stockquote.asmx"];
+    NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:url];
+    [req addValue:@"text/xml;utf-8" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:@"http://www.webservicex.net/GetQuote" forHTTPHeaderField:@"SOAPAction"];
+    [req setHTTPMethod:@"POST"];
+    [req setHTTPBody:[soapRequest dataUsingEncoding:NSUTF8StringEncoding]];
+    conn=[[NSURLConnection alloc] initWithRequest:req delegate:self];
+    if(conn)
+    {
+        self.buffer=[NSMutableData data];
+        [activityIndicatorView startAnimating];
+    }
+    
     
 }
 
@@ -33,6 +52,15 @@ NSURLConnection *conn;
 
 -(void) connectionDidFinishLoading:(NSURLConnection *) connection {
 	NSLog(@"Done with bytes %d", [buffer length]);
+    NSMutableString *theXML=[[NSMutableString alloc] initWithBytes:[buffer mutableBytes] length:[buffer length] encoding:NSUTF8StringEncoding];
+    [theXML replaceOccurrencesOfString:@"&lt;" withString:@"<" options:0 range:NSMakeRange(0,[theXML length])];
+    
+    NSLog(@"Soap Response is %@",theXML);
+    [buffer setData:[theXML dataUsingEncoding:NSUTF8StringEncoding]];
+    self.parser = [ [NSXMLParser alloc]initWithData:buffer];
+    [parser setDelegate:self];
+    [parser parse];
+                                                                                           
 	[activityIndicatorView stopAnimating];
     
 }
