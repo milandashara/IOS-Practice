@@ -27,7 +27,7 @@ NSURLConnection *conn;
     NSURL *url=[NSURL URLWithString:@"http://www.webservicex.net/stockquote.asmx"];
     NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:url];
     [req addValue:@"text/xml;utf-8" forHTTPHeaderField:@"Content-Type"];
-    [req addValue:@"http://www.webservicex.net/GetQuote" forHTTPHeaderField:@"SOAPAction"];
+    [req addValue:@"http://www.webservicex.net/stockquote.asmx/GetQuote" forHTTPHeaderField:@"SOAPAction"];
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody:[soapRequest dataUsingEncoding:NSUTF8StringEncoding]];
     conn=[[NSURLConnection alloc] initWithRequest:req delegate:self];
