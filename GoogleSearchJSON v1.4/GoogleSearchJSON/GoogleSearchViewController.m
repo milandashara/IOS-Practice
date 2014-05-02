@@ -62,6 +62,8 @@ didCompleteWithError:(NSError *)error
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SwitchResultView" object:nil];
     
     
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

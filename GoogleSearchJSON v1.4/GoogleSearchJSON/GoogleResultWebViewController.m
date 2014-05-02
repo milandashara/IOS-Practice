@@ -10,7 +10,7 @@
 #import "SearchResults.h"
 @implementation GoogleResultWebViewController
 
-@synthesize webView,searchResults;
+@synthesize webView,searchResults,urlTextField;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     webView.delegate = self;
+    urlTextField.delegate=self;
 
 }
 
@@ -47,8 +48,9 @@
     NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
     
     [webView loadRequest:requestObj];
+    urlTextField.text=urlAddress;
 }
-
+-
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

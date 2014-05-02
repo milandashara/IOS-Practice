@@ -30,7 +30,7 @@
     toViewController2.searchResults=self.searchResults;
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(switchWebView) name:@"SwitchWebView" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(switchResultView) name:@"switchResultView" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(switchResultView) name:@"SwitchResultView" object:nil];
     
     
     return YES;
