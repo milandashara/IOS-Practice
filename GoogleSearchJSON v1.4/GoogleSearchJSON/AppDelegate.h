@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CFNetwork/CFNetwork.h>
 @class SearchResults;
-@interface AppDelegate : UIResponder <UIApplicationDelegate> 
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property(strong,nonatomic) SearchResults *searchResults;

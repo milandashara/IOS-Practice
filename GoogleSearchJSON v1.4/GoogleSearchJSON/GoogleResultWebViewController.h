@@ -15,4 +15,5 @@
 @property(strong,nonatomic) SearchResults *searchResults;
 
 @property(strong, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)backBtnClicked:(id)sender;
 @end

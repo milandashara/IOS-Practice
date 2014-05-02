@@ -50,7 +50,7 @@
     [webView loadRequest:requestObj];
     urlTextField.text=urlAddress;
 }
--
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -71,6 +71,18 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    NSURL *url=[NSURL URLWithString:textField.text];
+    NSURLRequest *requestObj=[NSURLRequest requestWithURL:url];
+    [webView loadRequest:requestObj];
+    return YES;
+}
 
-
+- (IBAction)backBtnClicked:(id)sender {
+    //urlTextField.text=[webView stringByEvaluatingJavaScriptFromString:@"window.location"];
+}
 @end
+
+

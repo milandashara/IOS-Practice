@@ -11,7 +11,11 @@
 #import "GoogleResultsViewController.h"
 #import "GoogleResultWebViewController.h"
 #import "GoogleSearchViewController.h"
-@implementation AppDelegate
+#import "Reachability.h";
+
+@implementation AppDelegate{
+    Reachability *internetReach;
+}
 @synthesize searchResults;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -31,7 +35,8 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(switchWebView) name:@"SwitchWebView" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(switchResultView) name:@"SwitchResultView" object:nil];
-    
+    internetReach = [Reachability reachabilityForInternetConnection] ;
+    [internetReach startNotifier];
     
     return YES;
 }
@@ -86,5 +91,28 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+- (void) reachabilityChanged: (NSNotification* )note
+{
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    switch (netStatus)
+    {
+        case ReachableViaWWAN:
+        {
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            break;
+        }
+        case NotReachable:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"We are unable to make a internet connection at this time. Some functionality will be limited until a connection is made." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            break;
+        }
+    }
+}
 @end

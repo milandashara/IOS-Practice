@@ -144,6 +144,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="backBtnClicked:" destination="dNK-yT-zaj" eventType="touchUpInside" id="ANn-7H-lOS"/>
                                     <action selector="goBack" destination="fla-4F-p4f" eventType="touchUpInside" id="fzf-Tn-J69"/>
                                 </connections>
                             </button>

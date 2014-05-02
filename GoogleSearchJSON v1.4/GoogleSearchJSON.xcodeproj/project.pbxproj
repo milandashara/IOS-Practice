@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1AFD78191421360053EC96 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1AFD77191421360053EC96 /* CFNetwork.framework */; };
+		3F1AFD7B1914223C0053EC96 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1AFD7A1914223C0053EC96 /* Reachability.m */; };
 		712A8F631875A0DB0061B893 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A8F621875A0DB0061B893 /* Foundation.framework */; };
 		712A8F651875A0DB0061B893 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A8F641875A0DB0061B893 /* CoreGraphics.framework */; };
 		712A8F671875A0DB0061B893 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A8F661875A0DB0061B893 /* UIKit.framework */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F1AFD77191421360053EC96 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3F1AFD791914223C0053EC96 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3F1AFD7A1914223C0053EC96 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		712A8F5F1875A0DB0061B893 /* GoogleSearchJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleSearchJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712A8F621875A0DB0061B893 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		712A8F641875A0DB0061B893 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F1AFD78191421360053EC96 /* CFNetwork.framework in Frameworks */,
 				712A8F651875A0DB0061B893 /* CoreGraphics.framework in Frameworks */,
 				712A8F671875A0DB0061B893 /* UIKit.framework in Frameworks */,
 				712A8F631875A0DB0061B893 /* Foundation.framework in Frameworks */,
@@ -110,6 +116,7 @@
 		712A8F611875A0DB0061B893 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F1AFD77191421360053EC96 /* CFNetwork.framework */,
 				712A8F621875A0DB0061B893 /* Foundation.framework */,
 				712A8F641875A0DB0061B893 /* CoreGraphics.framework */,
 				712A8F661875A0DB0061B893 /* UIKit.framework */,
@@ -134,6 +141,8 @@
 				712A8F741875A0DB0061B893 /* Main.storyboard */,
 				712A8F7D1875A0DB0061B893 /* Images.xcassets */,
 				712A8F691875A0DB0061B893 /* Supporting Files */,
+				3F1AFD791914223C0053EC96 /* Reachability.h */,
+				3F1AFD7A1914223C0053EC96 /* Reachability.m */,
 			);
 			path = GoogleSearchJSON;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 				712A8F731875A0DB0061B893 /* AppDelegate.m in Sources */,
 				712A8FB01875A30D0061B893 /* GoogleResultsViewController.m in Sources */,
 				712A8FB91875A30D0061B893 /* SearchResults.m in Sources */,
+				3F1AFD7B1914223C0053EC96 /* Reachability.m in Sources */,
 				712A8F6F1875A0DB0061B893 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
