@@ -8,6 +8,7 @@
 //005134986919924311185:xeenulwntoq
 #import "GoogleSearchViewController.h"
 #import "SearchResults.h"
+#import "Reachability.h"
 @implementation GoogleSearchViewController
 
 @synthesize searchString, activityIndicatorView, buffer,searchResults;
@@ -15,13 +16,46 @@
 - (IBAction) search {
     [activityIndicatorView startAnimating];
     self.buffer=[NSMutableData data];
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+  /*  if ((internetStatus != ReachableViaWiFi) || (internetStatus != ReachableViaWWAN)) {
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Internet Status"
+                                                          message:@"Internet Connection is not available"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        
+        [message show];
+    }
+    else {*/
+        //there-is-no-connection warning
+    switch (internetStatus)
+    {
+        case ReachableViaWWAN:
+        {
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            break;
+        }
+        case NotReachable:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"We are unable to make a internet connection at this time. Some functionality will be limited until a connection is made." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            return;
+            break;
+        }
+    }
+    
     NSURLSessionConfiguration *defaultConfig=[NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session=[NSURLSession sessionWithConfiguration:defaultConfig delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
     [[session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.googleapis.com/customsearch/v1?key=AIzaSyD9sseAh8CyOC6e8sAeevgm_U1eK9R9mSw&cx=005134986919924311185:xeenulwntoq&q=%@&alt=json",searchString.text]]]resume];
     
-   
+  // }
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data

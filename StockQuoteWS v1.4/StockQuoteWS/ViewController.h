@@ -17,7 +17,9 @@
 @property (strong, nonatomic) NSMutableData *buffer;
 @property(strong,nonatomic) NSXMLParser *parser;
 //@property(strong,nonatomic) NSURLConnection *conn;
+@property (weak, nonatomic) IBOutlet UILabel *highLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *lowLabel;
 
 
 

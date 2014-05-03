@@ -49,6 +49,7 @@
     
     [webView loadRequest:requestObj];
     urlTextField.text=urlAddress;
+    webView.delegate=self;
 }
 
 /*
@@ -81,8 +82,15 @@
 }
 
 - (IBAction)backBtnClicked:(id)sender {
-    //urlTextField.text=[webView stringByEvaluatingJavaScriptFromString:@"window.location"];
+   // urlTextField.text=webView.request.URL.absoluteString;
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+     urlTextField.text=webView.request.URL.absoluteString;
+}
+
 @end
 
 

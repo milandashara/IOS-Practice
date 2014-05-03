@@ -94,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F5B1567191503A9001C9F6A /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		712A8F561875A0DB0061B893 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +135,7 @@
 		712A8F681875A0DB0061B893 /* GoogleSearchJSON */ = {
 			isa = PBXGroup;
 			children = (
+				3F5B1567191503A9001C9F6A /* iPad */,
 				712A8F9C1875A30D0061B893 /* GoogleResultWebViewController.h */,
 				712A8F9B1875A30D0061B893 /* GoogleResultWebViewController.m */,
 				712A8F9D1875A30D0061B893 /* GoogleResultsViewController.h */,
@@ -409,7 +417,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoogleSearchJSON/GoogleSearchJSON-Prefix.pch";
 				INFOPLIST_FILE = "GoogleSearchJSON/GoogleSearchJSON-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -422,7 +432,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoogleSearchJSON/GoogleSearchJSON-Prefix.pch";
 				INFOPLIST_FILE = "GoogleSearchJSON/GoogleSearchJSON-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
